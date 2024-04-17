@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  postgresql:
+    image: postgres:latest
+    container_name: postgresql_db
+    restart: always
+    environment:
+      POSTGRES_USER: sigam
+      POSTGRES_PASSWORD: senha
+      POSTGRES_DB: sigamdb
+    ports:
+      - "5443:5432"
+    volumes:
+      - ./postgresql-data:/var/lib/postgresql/data
