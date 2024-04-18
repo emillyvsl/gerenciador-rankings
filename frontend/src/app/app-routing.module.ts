@@ -13,7 +13,8 @@ import { RegisterScoreComponent } from './components/register-score/register-sco
 const routes: Routes = [
   {path : "registrar-player", component :RegisterPlayersComponent },
   {path: "listar-player", component :ListPlayersComponent},
-  {path: "adicionar-pontos/:id",component:RegisterScoreComponent}
+  {path: "adicionar-pontos/:id",component:RegisterScoreComponent},
+  {path: "", redirectTo: "/listar-player", pathMatch: "full"}
 ];
 
 @NgModule({

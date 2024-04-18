@@ -7,6 +7,8 @@ import { RegisterPlayersComponent } from './components/register-players/register
 import { ListPlayersComponent } from './components/list-players/list-players.component';
 import { FormsModule } from '@angular/forms';
 import { RegisterScoreComponent } from './components/register-score/register-score.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { RegisterScoreComponent } from './components/register-score/register-sco
     RegisterPlayersComponent,
     ListPlayersComponent,
     RegisterScoreComponent,
+    FooterComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
