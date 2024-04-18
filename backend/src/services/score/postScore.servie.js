@@ -3,7 +3,8 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 const postScoreSrvice = async (data) => {
-    const { player, score } = data;
+    let { player, score } = data;
+    player = parseInt(player);
     const playerExists = await prisma.player.findUnique({
         where: {
             id: player

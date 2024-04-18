@@ -10,10 +10,22 @@ const sumScoreService = async () => {
             }
         });
 
-        // Modificando a estrutura da resposta para conter apenas a soma das pontuações
-        const sums = scores.map(score => ({
-            playerId: score.playerId,
-            totalScore: score._sum.score
+        // Modificando a estrutura da resposta para incluir os dados do jogador e a soma das pontuações
+        const sums = await Promise.all(scores.map(async (score) => {
+            const player = await prisma.player.findUnique({
+                where: {
+                    id: score.playerId
+                },
+                select: {
+                    id: true,
+                    name: true // Selecione outros campos do jogador conforme necessário
+                }
+            });
+            return {
+                playerId: score.playerId,
+                player: player, // Inclui os dados do jogador na resposta
+                totalScore: score._sum.score
+            };
         }));
 
         return sums;
@@ -24,4 +36,5 @@ const sumScoreService = async () => {
         await prisma.$disconnect(); // Desconectar do banco de dados ao finalizar
     }
 };
+
 export { sumScoreService };
