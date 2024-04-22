@@ -1,6 +1,5 @@
-// schema.prisma
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -13,13 +12,12 @@ model Player {
   name      String
   createdAt DateTime @default(now())
   scores    Score[]
-  
-}
-model Score {
-  id          Int      @id @default(autoincrement())
-  playerId    Int
-  score       Int
-  matchDate   DateTime @default(now())
-  player      Player   @relation(fields: [playerId], references: [id])
 }
 
+model Score {
+  id        Int      @id @default(autoincrement())
+  playerId  Int
+  score     Int
+  matchDate DateTime @default(now())
+  player    Player   @relation(fields: [playerId], references: [id])
+}
