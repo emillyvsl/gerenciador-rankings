@@ -14,4 +14,7 @@ export class ScoreService {
     createScore(score: Score) {
       return this.http.post(`${this.baseUrl}/scores`, score);
     }
+    deleteScore(id: number) {
+      return this.http.delete(`${this.baseUrl}/scores/${id}`);
+    }
 }

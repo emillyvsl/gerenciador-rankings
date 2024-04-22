@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { RegisterScoreComponent } from './components/register-score/register-score.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import Swal from 'sweetalert2';
+
+
 
 @NgModule({
   declarations: [
@@ -18,6 +21,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RegisterScoreComponent,
     FooterComponent,
     NavbarComponent,
+  
+
   ],
   imports: [
     BrowserModule,

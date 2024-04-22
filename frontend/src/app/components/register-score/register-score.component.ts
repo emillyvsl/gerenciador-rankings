@@ -5,6 +5,7 @@ import { Player } from 'src/app/models/player';
 import { Score } from 'src/app/models/score';
 import { PlayerService } from 'src/app/services/player.service';
 import { ScoreService } from 'src/app/services/score.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register-score',
@@ -48,6 +49,7 @@ export class RegisterScoreComponent {
     this.scoreService.createScore(this.score).subscribe({
       complete: () => {
         this.router.navigate(['/listar-player']);
+        Swal.fire('Pontuação registrada com sucesso!', '', 'success');
       }
     });
   }

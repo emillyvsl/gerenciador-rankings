@@ -18,7 +18,7 @@
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-3">
-                <p class="fw-bold mb-1">{{play.posicao}}</p>
+                <p class="fw-bold mb-1"> {{play.posicao}}  <i class="fa-solid fa-trophy text-warning"></i></p>
               </div>
             </div>
           </td>
@@ -27,12 +27,16 @@
           </td>
           <td>
             <span class="badge badge-success rounded-pill d-inline">{{play.totalScore}}</span>
+
           </td>
           <td>
-            <button type="button" class="btn btn-dark btn-floating" data-mdb-ripple-init data-mdb-ripple-color="dark" (click)="openRegisterScore(play.playerId)">
+            <button type="button" class="btn btn-dark" (click)="openRegisterScore(play.playerId)">
               Adicionar Pontos
             </button>
+            <button class="btn ml-2" ><i class="fa-solid fa-edit text-primary"></i></button>
+            <button class="btn ml-2" (click)="deletePlayer(play.playerId)"><i class="fa fa-trash text-danger"></i></button>
           </td>
+
         </tr>
       </tbody>
     </table>

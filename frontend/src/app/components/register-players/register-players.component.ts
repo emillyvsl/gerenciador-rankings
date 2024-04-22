@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs';
 import { Player } from 'src/app/models/player';
 import { PlayerService } from 'src/app/services/player.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register-players',
@@ -26,6 +27,7 @@ export class RegisterPlayersComponent {
         })
       ).subscribe({complete: () => {
         this.router.navigate(['/listar-player']);
+        Swal.fire('Jogador cadastrado com sucesso!', '', 'success');
       }
     })
     }

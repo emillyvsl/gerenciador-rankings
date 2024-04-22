@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { PlayerScore } from 'src/app/models/player-score';
 import { PlayerService } from 'src/app/services/player.service';
 import { Router } from '@angular/router';
+import { ScoreService } from 'src/app/services/score.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,7 +15,8 @@ export class ListPlayersComponent {
   players: PlayerScore[] = [];
 
   constructor(private playerService: PlayerService,
-    private router: Router
+    private router: Router,
+    private scoreService: ScoreService,
   ) { }
 
   ngOnInit(): void {
@@ -42,5 +45,25 @@ export class ListPlayersComponent {
   openRegisterPlayer() {
     this.router.navigate(['/registrar-player']);
   }
+  deletePlayer(id: number) {
+    console.log(id);
+    Swal.fire({
+      title: 'Deseja realmente excluir este jogador?',
+      showCancelButton: true,
+      confirmButtonText: `Sim`,
+      cancelButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.scoreService.deleteScore(id).subscribe({
+          complete: () => {
+            this.listPlayers();
+            Swal.fire('Jogador excluído com sucesso!', '', 'success');
+          }
+        });
+      }
+    });
+
+  }
+
 
 }
