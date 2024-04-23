@@ -1,3 +1,3 @@
 export const environment = {
-  API_URL: 'http://localhost:4100',
+  API_URL: 'https://gerenciador-rankings.onrender.com',
 };
