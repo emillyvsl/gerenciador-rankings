@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { catchError } from 'rxjs';
 import { Player } from 'src/app/models/player';
 import { Score } from 'src/app/models/score';
 import { PlayerService } from 'src/app/services/player.service';
@@ -16,6 +17,7 @@ export class RegisterScoreComponent {
   playerId: string = '';
   player: Player = <Player>{};
   score: Score = <Score>{};
+  isSubmit : boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,8 +47,14 @@ export class RegisterScoreComponent {
     );
   }
   submit(form: NgForm) {
+    this.isSubmit = true;
     this.score.player = this.playerId;
-    this.scoreService.createScore(this.score).subscribe({
+    this.scoreService.createScore(this.score).pipe(
+      catchError((error) => {
+        this.isSubmit = false;
+        return error;
+      }
+    )).subscribe({
       complete: () => {
         this.router.navigate(['/listar-player']);
         Swal.fire('Pontuação registrada com sucesso!', '', 'success');

@@ -31,7 +31,9 @@
               <button type="submit" class="btn btn-warning btn-md btn-block custom-orange-bg"class="btn btn-primary btn-lg" [disabled]="isSubmit">
                 <span *ngIf="!isSubmit">Cadastrar</span>
                 <span *ngIf="isSubmit">
-                  <i class="fa-regular fa-clipboard"></i>
+                  <div class="spinner-border text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
                 </span>
               </button>
           </div>
