@@ -23,7 +23,7 @@ model Player {
 model Score {
   id        Int      @id @default(autoincrement())
   playerId  Int
-  score     Int
+  score     Float
   matchDate DateTime @default(now())
   player    Player   @relation(fields: [playerId], references: [id])
 }
