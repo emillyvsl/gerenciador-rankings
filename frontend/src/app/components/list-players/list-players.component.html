@@ -41,6 +41,12 @@
       </tbody>
     </table>
   </div>
+  <div>
+
+  </div>
+  <div *ngIf="players.length === 0 && !loading" class="d-flex justify-content-center pt-10">Não há usuários cadastrados!</div>
+
+
   <div class="d-flex justify-content-center pt-10">
     <div *ngIf="!loading; else loadingTemplate"></div>
   </div>
